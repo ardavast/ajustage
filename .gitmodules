@@ -1,0 +1,6 @@
+[submodule "ringer/freertos"]
+	path = ringer/freertos
+	url = https://github.com/FreeRTOS/FreeRTOS-Kernel.git
+[submodule "ringer/libopencm3"]
+	path = ringer/libopencm3
+	url = https://github.com/libopencm3/libopencm3.git
