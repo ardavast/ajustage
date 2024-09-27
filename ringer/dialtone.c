@@ -22,12 +22,6 @@ int main(void)
 	rcc_periph_clock_enable(RCC_TIM2);
 	nvic_enable_irq(NVIC_TIM2_IRQ);
 	rcc_periph_reset_pulse(RST_TIM2);
-
-	// Clock division ratio: 1
-	// Center-aligned Mode Selection: Edge
-	// Direction: Up
-	timer_set_mode(TIM2, TIM_CR1_CKD_CK_INT, TIM_CR1_CMS_EDGE, TIM_CR1_DIR_UP);
-	timer_continuous_mode(TIM2); // Continous mode (that is, not one-shot mode, ~OPM)
 	timer_set_period(TIM2, 10500-1); // 125us (8kHz)
 	timer_enable_irq(TIM2, TIM_DIER_UIE);
 	timer_enable_counter(TIM2);
