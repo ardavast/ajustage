@@ -1,0 +1,126 @@
+kibot:
+  version: 1
+
+preflight:
+  erc: true
+  drc: true
+  update_xml: true
+
+filters:
+  - name: fix_placement
+    type: rot_footprint
+    extend: false
+    rotations:
+      - ["^CP_Elec_8x10", 180]
+      - ["^SOT-23", 180]
+
+outputs:
+  - name: gerbers
+    type: gerber
+    dir: jlcpcb/gerbers
+    layers:
+      - F.Cu
+      - B.Cu
+      - F.Paste
+      - B.Paste
+      - F.SilkS
+      - B.SilkS
+      - F.Mask
+      - B.Mask
+      - Edge.Cuts
+    options:
+      subtract_mask_from_silk: true
+      use_gerber_net_attributes: false
+      use_gerber_x2_attributes: false
+      use_protel_extensions: true
+      exclude_pads_from_silkscreen: true
+      plot_footprint_refs: true
+      plot_footprint_values: true
+      tent_vias: true
+
+  - name: drill
+    type: excellon
+    dir: jlcpcb/gerbers
+    options:
+      pth_and_npth_single_file: false
+      map: gerber
+      route_mode_for_oval_holes: false
+
+  - name: zip
+    type: compress
+    dir: jlcpcb/
+    options:
+      files:
+        - from_output: gerbers
+        - from_output: drill
+      output: '%f-gerbers.%x'
+
+  - name: bom_csv
+    type: kibom
+    dir: jlcpcb
+    options:
+      conf:
+        columns:
+          - field: Value
+            name: Comment
+          - field: References
+            name: Designator
+          - Footprint
+          - LCSC
+        number_rows: false
+        hide_pcb_info: true
+        group_fields: ['LCSC']
+        ref_separator: ','
+      format: 'CSV'
+
+  - name: pos_csv
+    type: position
+    dir: jlcpcb
+    options:
+      pre_transform: fix_placement
+      only_smd: true
+      separate_files_for_front_and_back: false
+      format: CSV
+      output: '%f-cpl.%x'
+      columns:
+        - id: Ref
+          name: Designator
+        - Val
+        - Package
+        - id: PosX
+          name: "Mid X"
+        - id: PosY
+          name: "Mid Y"
+        - id: Rot
+          name: Rotation
+        - id: Side
+          name: Layer
+
+  - name: sch_pdf
+    type: pdf_sch_print
+    dir: pdf
+
+  - name: pcb_pdf
+    type: pcb_print
+    dir: pdf
+    options:
+      format: PDF
+      pages:
+      - layers:
+        - layer: F.Cu
+        - layer: F.Mask
+          color: '#14332440'
+        - layer: F.Paste
+        - layer: F.Silkscreen
+        - layer: Edge.Cuts
+        sheet: Front
+      - layers:
+        - layer: B.Cu
+        - layer: B.Mask
+          color: '#14332440'
+        - layer: B.Paste
+        - layer: B.Silkscreen
+        - layer: Edge.Cuts
+        sheet: Bottom
+      keep_temporal_files: false
+      output: '%f-pcb.%x'
