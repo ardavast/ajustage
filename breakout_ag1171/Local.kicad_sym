@@ -80,7 +80,7 @@
 				)
 			)
 			(pin input line
-				(at 11.43 -5.08 180)
+				(at 11.43 -10.16 180)
 				(length 2.54)
 				(name "V_{out}"
 					(effects
@@ -296,7 +296,7 @@
 				)
 			)
 			(pin input line
-				(at 11.43 -10.16 180)
+				(at 11.43 -5.08 180)
 				(length 2.54)
 				(name "V_{in}"
 					(effects

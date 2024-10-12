@@ -4134,7 +4134,7 @@
 					)
 				)
 				(pin input line
-					(at 11.43 -5.08 180)
+					(at 11.43 -10.16 180)
 					(length 2.54)
 					(name "V_{out}"
 						(effects
@@ -4350,7 +4350,7 @@
 					)
 				)
 				(pin input line
-					(at 11.43 -10.16 180)
+					(at 11.43 -5.08 180)
 					(length 2.54)
 					(name "V_{in}"
 						(effects
@@ -4821,12 +4821,6 @@
 		(uuid "0d2cac92-22d6-4d80-9117-5b916657e3c0")
 	)
 	(junction
-		(at 143.51 118.11)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1226dc46-7782-4732-8d67-503c2262c527")
-	)
-	(junction
 		(at 113.03 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4863,6 +4857,12 @@
 		(uuid "5f212b01-ccfa-4240-b875-6148af6b9cfa")
 	)
 	(junction
+		(at 143.51 118.11)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6481c65f-5de1-4f03-a504-7e8d7238d40e")
+	)
+	(junction
 		(at 76.2 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4875,16 +4875,16 @@
 		(uuid "ab7a2fa5-3aaf-4b12-a19f-c83eddb7b76e")
 	)
 	(junction
-		(at 143.51 123.19)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "bc3630fe-7618-44d3-8971-e28ebe47cbbc")
-	)
-	(junction
 		(at 129.54 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c07a5d24-758c-4d39-b57d-7659e4b61d41")
+	)
+	(junction
+		(at 143.51 123.19)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e2517040-36b1-4a54-83cc-77d5885e5695")
 	)
 	(junction
 		(at 113.03 31.75)
@@ -5284,6 +5284,16 @@
 	)
 	(wire
 		(pts
+			(xy 143.51 118.11) (xy 148.59 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "263d9566-27f8-42cb-a976-91c0ff11619d")
+	)
+	(wire
+		(pts
 			(xy 90.17 104.14) (xy 90.17 105.41)
 		)
 		(stroke
@@ -5371,6 +5381,16 @@
 			(type default)
 		)
 		(uuid "38cb1e13-1887-4c76-b754-719cc0b7ec62")
+	)
+	(wire
+		(pts
+			(xy 143.51 123.19) (xy 157.48 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d3f563b-0e34-48f9-8045-b5a4d0f1b00e")
 	)
 	(wire
 		(pts
@@ -5544,16 +5564,6 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 123.19) (xy 157.48 123.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6660a369-389c-4a26-8e5c-f2204664762e")
-	)
-	(wire
-		(pts
 			(xy 140.97 123.19) (xy 143.51 123.19)
 		)
 		(stroke
@@ -5624,16 +5634,6 @@
 	)
 	(wire
 		(pts
-			(xy 143.51 123.19) (xy 148.59 123.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "84597144-0af2-48fd-8ca5-63fc55cfb68c")
-	)
-	(wire
-		(pts
 			(xy 78.74 39.37) (xy 78.74 69.85)
 		)
 		(stroke
@@ -5641,6 +5641,16 @@
 			(type default)
 		)
 		(uuid "8633f7eb-f7b4-4100-940f-9d1ea2cf93ca")
+	)
+	(wire
+		(pts
+			(xy 156.21 118.11) (xy 157.48 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "89de91d0-56c8-45e4-9cd5-9ba3d7e9afb8")
 	)
 	(wire
 		(pts
@@ -5791,16 +5801,6 @@
 			(type default)
 		)
 		(uuid "ae8ae28e-07bc-49fe-9f2c-9214e071a8cf")
-	)
-	(wire
-		(pts
-			(xy 143.51 118.11) (xy 157.48 118.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b366bf0a-22cd-4064-9667-655102c85be2")
 	)
 	(wire
 		(pts
@@ -6785,7 +6785,8 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 143.51 123.19 180)
+		(at 143.51 118.11 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6793,7 +6794,7 @@
 		(dnp no)
 		(uuid "1cf38a5d-2070-4eb7-bd75-9aec0c8d32ed")
 		(property "Reference" "TP4"
-			(at 143.51 128.905 0)
+			(at 143.51 112.395 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6802,7 +6803,7 @@
 			)
 		)
 		(property "Value" "V_{in}"
-			(at 143.51 128.905 0)
+			(at 143.51 112.395 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6810,7 +6811,7 @@
 			)
 		)
 		(property "Footprint" "Connector_Pin:Pin_D1.0mm_L10.0mm_LooseFit"
-			(at 138.43 123.19 0)
+			(at 138.43 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6819,7 +6820,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 138.43 123.19 0)
+			(at 138.43 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6828,7 +6829,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 143.51 123.19 0)
+			(at 143.51 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7363,113 +7364,9 @@
 		)
 	)
 	(symbol
-		(lib_id "Local:Ag1171")
-		(at 129.54 113.03 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "32d41674-826c-41fb-9967-548b87d5bcf1")
-		(property "Reference" "U1"
-			(at 120.65 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Ag1171"
-			(at 131.445 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Local:Ag1171"
-			(at 129.54 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.silvertel.com/images/datasheets/Ag1171-datasheet-Low-cost-ringing-SLIC-with-single-supply.pdf"
-			(at 129.54 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 129.54 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "1ac08740-7fa0-4e09-9b27-1476629925dd")
-		)
-		(pin "9"
-			(uuid "076163d2-102e-40f8-8c4d-911d5ef1e420")
-		)
-		(pin "4"
-			(uuid "483da1c7-fe96-43ab-9fa2-6a36474d97de")
-		)
-		(pin "14"
-			(uuid "55421734-c757-4db3-a086-4e623f36ee10")
-		)
-		(pin "1"
-			(uuid "6cffeeaa-bc7d-4569-9f53-120b3feca77f")
-		)
-		(pin "7"
-			(uuid "61bdc74c-0499-4b92-9df9-b3aa24372b52")
-		)
-		(pin "10"
-			(uuid "21834939-e20e-4c5d-aae5-48dec9152711")
-		)
-		(pin "5"
-			(uuid "5cc18de0-5352-4257-a86d-745bdb46ea0d")
-		)
-		(pin "11"
-			(uuid "34e1dc3d-e5b1-4bd7-828b-b90f4e8b0e7e")
-		)
-		(pin "2"
-			(uuid "88234eee-6e9c-4e6a-908c-48032dba0156")
-		)
-		(pin "13"
-			(uuid "a0ed13e9-b4dd-468c-ba47-664eaa79a4d9")
-		)
-		(pin "6"
-			(uuid "d4dbfeea-9167-4366-9323-fec21062873e")
-		)
-		(pin "8"
-			(uuid "4bb275e0-5e87-4b17-873d-000609892150")
-		)
-		(pin "12"
-			(uuid "a09d5db0-ec60-4e00-8847-7a07d934fc31")
-		)
-		(instances
-			(project ""
-				(path "/30184285-706e-4f32-927e-60e1ea7f4ed9"
-					(reference "U1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 143.51 118.11 0)
+		(at 143.51 123.19 0)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7477,7 +7374,7 @@
 		(dnp no)
 		(uuid "4c508114-233c-4d90-a5a9-2fd06a3d57e0")
 		(property "Reference" "TP3"
-			(at 141.605 113.03 0)
+			(at 141.605 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7487,7 +7384,7 @@
 			)
 		)
 		(property "Value" "V_{out}"
-			(at 141.605 112.395 0)
+			(at 141.605 128.905 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7496,7 +7393,7 @@
 			)
 		)
 		(property "Footprint" "Connector_Pin:Pin_D1.0mm_L10.0mm_LooseFit"
-			(at 148.59 118.11 0)
+			(at 148.59 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7505,7 +7402,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 148.59 118.11 0)
+			(at 148.59 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7514,7 +7411,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 143.51 118.11 0)
+			(at 143.51 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7614,7 +7511,8 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 152.4 123.19 270)
+		(at 152.4 118.11 270)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7622,7 +7520,7 @@
 		(dnp no)
 		(uuid "5e9699b1-63ba-4842-ac39-95dfaa8a3e6c")
 		(property "Reference" "R2"
-			(at 152.4 126.365 90)
+			(at 152.4 113.665 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7630,7 +7528,7 @@
 			)
 		)
 		(property "Value" "4k7"
-			(at 152.4 128.27 90)
+			(at 152.4 115.57 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7638,7 +7536,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 152.146 124.206 90)
+			(at 152.146 117.094 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7647,7 +7545,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 152.4 123.19 0)
+			(at 152.4 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7656,7 +7554,7 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
-			(at 152.4 123.19 0)
+			(at 152.4 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7665,7 +7563,7 @@
 			)
 		)
 		(property "LCSC" "C17673"
-			(at 152.4 123.19 90)
+			(at 152.4 118.11 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8038,8 +7936,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 160.02 123.19 270)
-		(mirror x)
+		(at 160.02 118.11 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8047,25 +7944,23 @@
 		(dnp no)
 		(uuid "7aca48e7-6227-4ba9-89bf-ba969d3f2a7c")
 		(property "Reference" "C4"
-			(at 158.75 126.365 90)
+			(at 160.02 113.665 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Value" "100n"
-			(at 157.48 128.27 90)
+			(at 160.02 115.57 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 160.02 123.19 0)
+			(at 160.02 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8074,7 +7969,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 160.02 123.19 0)
+			(at 160.02 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8083,7 +7978,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
-			(at 160.02 123.19 0)
+			(at 160.02 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8092,7 +7987,7 @@
 			)
 		)
 		(property "LCSC" "C71629"
-			(at 160.02 123.19 90)
+			(at 160.02 118.11 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8974,16 +8869,16 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C_Small")
-		(at 160.02 118.11 270)
+		(lib_id "Local:Ag1171")
+		(at 129.54 113.03 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b8ccb011-4331-4cae-a915-a528b6e18c10")
-		(property "Reference" "C3"
-			(at 158.75 113.665 90)
+		(uuid "af6373db-3e5b-4ce7-8334-633600df2180")
+		(property "Reference" "U1"
+			(at 120.65 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8991,8 +8886,113 @@
 				(justify left)
 			)
 		)
+		(property "Value" "Ag1171"
+			(at 131.445 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Local:Ag1171"
+			(at 129.54 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.silvertel.com/images/datasheets/Ag1171-datasheet-Low-cost-ringing-SLIC-with-single-supply.pdf"
+			(at 129.54 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 129.54 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "8"
+			(uuid "93515e65-7e50-4b7c-9dd3-bc1b08004753")
+		)
+		(pin "9"
+			(uuid "326eb37d-cab6-4ef3-b4e7-8038a2a06cfb")
+		)
+		(pin "5"
+			(uuid "db9c0a5e-a435-4a02-9b6c-90f742f86909")
+		)
+		(pin "4"
+			(uuid "d0412d90-73e9-40ba-9570-75a9c39c213f")
+		)
+		(pin "6"
+			(uuid "e95cd18c-4051-4e74-a1d7-d33fa67bc4bf")
+		)
+		(pin "3"
+			(uuid "597a3465-8f2d-485f-9e94-3b1456487066")
+		)
+		(pin "1"
+			(uuid "a14bdbfb-a77c-45d9-90d9-2a733b717b12")
+		)
+		(pin "10"
+			(uuid "f8c0428b-6a95-4eb6-bd48-58fc28632f6d")
+		)
+		(pin "7"
+			(uuid "0cbed7ff-9f06-4d4d-87b3-cbce1befebe7")
+		)
+		(pin "11"
+			(uuid "768ed992-c0ee-43ed-a7ee-1320b977938d")
+		)
+		(pin "2"
+			(uuid "90979be8-b515-4d54-9e5f-21a00003039f")
+		)
+		(pin "12"
+			(uuid "b8f095a8-586d-4954-a16e-037408bc8443")
+		)
+		(pin "14"
+			(uuid "de4227c7-d392-477c-8bd8-8881d66e072d")
+		)
+		(pin "13"
+			(uuid "4663ea12-08a6-4f85-b139-1e90cde56ff8")
+		)
+		(instances
+			(project ""
+				(path "/30184285-706e-4f32-927e-60e1ea7f4ed9"
+					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 160.02 123.19 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b8ccb011-4331-4cae-a915-a528b6e18c10")
+		(property "Reference" "C3"
+			(at 160.02 126.365 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Value" "100n"
-			(at 157.48 115.57 90)
+			(at 157.48 128.27 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9001,7 +9001,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 160.02 118.11 0)
+			(at 160.02 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9010,7 +9010,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 160.02 118.11 0)
+			(at 160.02 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9019,7 +9019,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
-			(at 160.02 118.11 0)
+			(at 160.02 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9028,7 +9028,7 @@
 			)
 		)
 		(property "LCSC" "C71629"
-			(at 160.02 118.11 90)
+			(at 160.02 123.19 90)
 			(effects
 				(font
 					(size 1.27 1.27)
