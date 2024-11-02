@@ -6483,7 +6483,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 133.35 87.63 0)
+		(at 133.35 87.63 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6491,7 +6491,7 @@
 		(dnp no)
 		(uuid "0fb099c3-6f1d-483e-b794-9894f3595749")
 		(property "Reference" "C1"
-			(at 135.255 86.995 0)
+			(at 137.795 86.995 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6500,7 +6500,7 @@
 			)
 		)
 		(property "Value" "10u"
-			(at 135.255 88.9 0)
+			(at 139.065 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8873,7 +8873,7 @@
 		(at 129.54 113.03 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "af6373db-3e5b-4ce7-8334-633600df2180")
@@ -8975,7 +8975,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 160.02 123.19 270)
+		(at 160.02 123.19 90)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8992,7 +8992,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 157.48 128.27 90)
+			(at 162.56 128.27 90)
 			(effects
 				(font
 					(size 1.27 1.27)
