@@ -29,10 +29,6 @@ int main(void)
 	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO9);
 	gpio_set_af(GPIOA, GPIO_AF7, GPIO9);
 
-	// PA9 is UART_TX
-	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO9);
-	gpio_set_af(GPIOA, GPIO_AF7, GPIO9);
-
 	// PA10 is UART_RX
 	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO10);
 	gpio_set_af(GPIOA, GPIO_AF7, GPIO10);
@@ -47,8 +43,8 @@ int main(void)
 	usart_set_flow_control(USART1, USART_FLOWCONTROL_NONE);
 	usart_enable(USART1);
 
-	// PA4 is DAC channel 1
-	gpio_mode_setup(GPIOA, GPIO_MODE_ANALOG, GPIO_PUPD_NONE, GPIO4);
+	// PA5 is DAC channel 2
+	gpio_mode_setup(GPIOA, GPIO_MODE_ANALOG, GPIO_PUPD_NONE, GPIO5);
 
 	// TIM2 ticks at 8kHz
 	rcc_periph_clock_enable(RCC_TIM2);
@@ -60,28 +56,28 @@ int main(void)
 
 	// DMA
 	rcc_periph_clock_enable(RCC_DMA1);
-	nvic_enable_irq(NVIC_DMA1_STREAM5_IRQ);
-	dma_stream_reset(DMA1, DMA_STREAM5);
-	dma_set_transfer_mode(DMA1, DMA_STREAM5, DMA_SxCR_DIR_MEM_TO_PERIPHERAL);
-	dma_set_memory_address(DMA1, DMA_STREAM5, (uint32_t)samples);
-	dma_set_memory_size(DMA1, DMA_STREAM5, DMA_SxCR_MSIZE_8BIT);
-	dma_set_peripheral_address(DMA1, DMA_STREAM5, (uint32_t)&DAC_DHR8R1(DAC1));
-	dma_set_peripheral_size(DMA1, DMA_STREAM5, DMA_SxCR_PSIZE_8BIT);
-	dma_set_number_of_data(DMA1, DMA_STREAM5, NSAMPLES);
-	dma_set_priority(DMA1, DMA_STREAM5, DMA_SxCR_PL_HIGH);
-	dma_enable_memory_increment_mode(DMA1, DMA_STREAM5);
-	dma_enable_circular_mode(DMA1, DMA_STREAM5);
-	dma_enable_half_transfer_interrupt(DMA1, DMA_STREAM5);
-	dma_enable_transfer_complete_interrupt(DMA1, DMA_STREAM5);
-	dma_channel_select(DMA1, DMA_STREAM5, DMA_SxCR_CHSEL_7);
-	dma_enable_stream(DMA1, DMA_STREAM5);
+	nvic_enable_irq(NVIC_DMA1_STREAM6_IRQ);
+	dma_stream_reset(DMA1, DMA_STREAM6);
+	dma_set_transfer_mode(DMA1, DMA_STREAM6, DMA_SxCR_DIR_MEM_TO_PERIPHERAL);
+	dma_set_memory_address(DMA1, DMA_STREAM6, (uint32_t)samples);
+	dma_set_memory_size(DMA1, DMA_STREAM6, DMA_SxCR_MSIZE_8BIT);
+	dma_set_peripheral_address(DMA1, DMA_STREAM6, (uint32_t)&DAC_DHR8R2(DAC1));
+	dma_set_peripheral_size(DMA1, DMA_STREAM6, DMA_SxCR_PSIZE_8BIT);
+	dma_set_number_of_data(DMA1, DMA_STREAM6, NSAMPLES);
+	dma_set_priority(DMA1, DMA_STREAM6, DMA_SxCR_PL_HIGH);
+	dma_enable_memory_increment_mode(DMA1, DMA_STREAM6);
+	dma_enable_circular_mode(DMA1, DMA_STREAM6);
+	dma_enable_half_transfer_interrupt(DMA1, DMA_STREAM6);
+	dma_enable_transfer_complete_interrupt(DMA1, DMA_STREAM6);
+	dma_channel_select(DMA1, DMA_STREAM6, DMA_SxCR_CHSEL_7);
+	dma_enable_stream(DMA1, DMA_STREAM6);
 
 	// DAC is triggered by TIM2
 	rcc_periph_clock_enable(RCC_DAC);
-	dac_set_trigger_source(DAC1, DAC_CR_TSEL1_T2);
-	dac_trigger_enable(DAC1, DAC_CHANNEL1);
-	dac_dma_enable(DAC1, DAC_CHANNEL1);
-	dac_enable(DAC1, DAC_CHANNEL1);
+	dac_set_trigger_source(DAC1, DAC_CR_TSEL2_T2);
+	dac_trigger_enable(DAC1, DAC_CHANNEL2);
+	dac_dma_enable(DAC1, DAC_CHANNEL2);
+	dac_enable(DAC1, DAC_CHANNEL2);
 
 	for (;;) {
 		while (!fill1);
@@ -102,18 +98,18 @@ int main(void)
 	return 0;
 }
 
-void dma1_stream5_isr(void)
+void dma1_stream6_isr(void)
 {
-	if (dma_get_interrupt_flag(DMA1, DMA_STREAM5, DMA_HTIF)) {
-		dma_clear_interrupt_flags(DMA1, DMA_STREAM5, DMA_HTIF);
+	if (dma_get_interrupt_flag(DMA1, DMA_STREAM6, DMA_HTIF)) {
+		dma_clear_interrupt_flags(DMA1, DMA_STREAM6, DMA_HTIF);
 		if (fill1) {
 			gpio_toggle(GPIOC, GPIO12);
 		}
 		fill1 = true;
 	}
 
-	if (dma_get_interrupt_flag(DMA1, DMA_STREAM5, DMA_TCIF)) {
-		dma_clear_interrupt_flags(DMA1, DMA_STREAM5, DMA_TCIF);
+	if (dma_get_interrupt_flag(DMA1, DMA_STREAM6, DMA_TCIF)) {
+		dma_clear_interrupt_flags(DMA1, DMA_STREAM6, DMA_TCIF);
 		if (fill2) {
 			gpio_toggle(GPIOC, GPIO12);
 		}
