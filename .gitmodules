@@ -1,6 +1,18 @@
+[submodule "ringer/libopencm3"]
+	path = ringer/libopencm3
+	url = https://github.com/libopencm3/libopencm3.git
 [submodule "ringer/freertos"]
 	path = ringer/freertos
 	url = https://github.com/FreeRTOS/FreeRTOS-Kernel.git
-[submodule "ringer/libopencm3"]
-	path = ringer/libopencm3
+[submodule "dialtone/libopencm3"]
+	path = dialtone/libopencm3
+	url = https://github.com/libopencm3/libopencm3.git
+[submodule "dialtone/freertos"]
+	path = dialtone/freertos
+	url = https://github.com/FreeRTOS/FreeRTOS-Kernel.git
+[submodule "serial_dac/freertos"]
+	path = serial_dac/freertos
+	url = https://github.com/FreeRTOS/FreeRTOS-Kernel.git
+[submodule "serial_dac/libopencm3"]
+	path = serial_dac/libopencm3
 	url = https://github.com/libopencm3/libopencm3.git

@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
               paClipOff,      // flags
               audio_callback, // callback
               NULL);          // callback data
-			      //
+
     if (err != paNoError) {
       pa_err(err, "Pa_OpenStream()");
       Pa_Terminate();

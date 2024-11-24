@@ -19,19 +19,19 @@ CFLAGS  := -I./ \
 	   -I$(FREERTOS_DIR)/portable/GCC/ARM_CM4F \
            -c -Os -fno-common -ffunction-sections -fdata-sections $(ARCH_FLAGS)
 LDFLAGS := -L./$(LIBOPENCM3_DIR)/lib -Tstm32.ld --static -nostartfiles -Wl,--gc-sections $(ARCH_FLAGS)
-LDLIBS  += -Wl,--start-group -lc -lgcc -lnosys -lopencm3_stm32f4 -Wl,--end-group
+LDLIBS  += -Wl,--start-group -lc -lm -lgcc -lnosys -lopencm3_stm32f4 -Wl,--end-group
 
 FREERTOS_OBJ := $(FREERTOS_SRC:.c=.o)
 
 .PHONY: all clean libopencm3
 
-all: libopencm3 ringer.bin
+all: libopencm3 serial_dac.bin
 
-ringer.bin: ringer.elf 
+serial_dac.bin: serial_dac.elf
 	$(OBJCOPY) -Obinary $< $@
 
-ringer.elf: ringer.o $(FREERTOS_OBJ) stm32.ld
-	$(LD) $(LDFLAGS) ringer.o $(FREERTOS_OBJ) $(LDLIBS) -o $@
+serial_dac.elf: serial_dac.o $(FREERTOS_OBJ) stm32.ld
+	$(LD) $(LDFLAGS) serial_dac.o $(FREERTOS_OBJ) $(LDLIBS) -o $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) $< -o $@
@@ -40,7 +40,7 @@ libopencm3:
 	$(MAKE) -s -C $(LIBOPENCM3_DIR)
 
 clean:
-	rm -f ringer.lst ringer.o ringer.elf ringer.lst ringer.bin FreeRTOSConfig.h.gch $(FREERTOS_OBJ) 
+	rm -f serial_dac.lst serial_dac.o serial_dac.elf serial_dac.lst serial_dac.bin FreeRTOSConfig.h.gch $(FREERTOS_OBJ) 
 
-flash: ringer.bin
-	st-flash write ringer.bin 0x08000000
+flash: serial_dac.bin
+	st-flash write serial_dac.bin 0x08000000
