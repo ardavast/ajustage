@@ -16,3 +16,9 @@
 [submodule "serial_dac/libopencm3"]
 	path = serial_dac/libopencm3
 	url = https://github.com/libopencm3/libopencm3.git
+[submodule "usb_dac/libopencm3"]
+	path = usb_dac/libopencm3
+	url = https://github.com/libopencm3/libopencm3.git
+[submodule "usb_dac/freertos"]
+	path = usb_dac/freertos
+	url = https://github.com/FreeRTOS/FreeRTOS-Kernel.git
