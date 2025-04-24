@@ -21,7 +21,7 @@ static const struct {
 } __attribute__((packed)) audio_ctl_function = {
 	.header_head = {
 		.bLength = sizeof(struct usb_audio_header_descriptor_head) +
-		           sizeof(struct usb_audio_header_descriptor_body),  // bLength = 9
+		           sizeof(struct usb_audio_header_descriptor_body),
 		.bDescriptorType = USB_AUDIO_DT_CS_INTERFACE,
 		.bDescriptorSubtype = USB_AUDIO_TYPE_HEADER,
 		.bcdADC = 0x0100,
@@ -31,14 +31,14 @@ static const struct {
 			   sizeof(struct usb_audio_input_terminal_descriptor) +
 			   sizeof(struct usb_audio_feature_unit_descriptor_head) +
 			   sizeof(struct usb_audio_feature_unit_descriptor_tail) +
-			   sizeof(struct usb_audio_output_terminal_descriptor), // wTotalLength = 9 + 12 + 9 + 9 = 39
+			   sizeof(struct usb_audio_output_terminal_descriptor),
 		.binCollection = 1,
 	},
 	.header_body = {
 		.baInterfaceNr = 0x01,
 	},
 	.in = {
-		.bLength = sizeof(struct usb_audio_input_terminal_descriptor), // 12
+		.bLength = sizeof(struct usb_audio_input_terminal_descriptor),
 		.bDescriptorType = USB_AUDIO_DT_CS_INTERFACE,
 		.bDescriptorSubtype = USB_AUDIO_TYPE_INPUT_TERMINAL,
 		.bTerminalID = 1,
@@ -233,8 +233,8 @@ static enum usbd_request_return_codes control_cb(
 static void audio_rx_cb(usbd_device *usbd_dev, uint8_t ep) {
 	(void)ep;
 
-	static uint16_t ctr, errctr = 0;
-	static int16_t s16_le;
+	static int16_t *s16_le;
+	static int i = 32;
 	uint8_t buf[16];
 
 	int len = usbd_ep_read_packet(usbd_dev, 0x02, buf, 16);
@@ -244,32 +244,18 @@ static void audio_rx_cb(usbd_device *usbd_dev, uint8_t ep) {
 		OTG_FS_DOEPCTL(2) |= (1 << 29);
 	}
 
-	if (fill_dac1 && ctr == 0) {
-		for (int i = 0; i < 8; i++) {
-			s16_le = ((int16_t)(buf[i*2+1]) << 8) | buf[i*2];
-			dac_samples[i] = ((uint16_t)(s16_le) + 32767) >> 4;
-		}
-		ctr++;
-	} else if (fill_dac1 && ctr == 1) {
-		for (int i = 0; i < 8; i++) {
-			s16_le = ((int16_t)(buf[i*2+1]) << 8) | buf[i*2];
-			dac_samples[i+8] = ((uint16_t)(s16_le) + 32767) >> 4;
+	s16_le = (int16_t *)buf;
+
+	if (fill_dac1) {
+		for (i = 0; i < HSAMPLES; i++) {
+			dac_samples[i] = ((uint16_t)(*s16_le++ + 32767)) >> 4;
 		}
 		fill_dac1 = false;
-		ctr++;
-	} else if (fill_dac2 && ctr == 2) {
-		for (int i = 0; i < 8; i++) {
-			s16_le = ((int16_t)(buf[i*2+1]) << 8) | buf[i*2];
-			dac_samples[i+16] = ((uint16_t)(s16_le) + 32767) >> 4;
-		}
-		ctr++;
-	} else if (fill_dac2 && ctr == 3) {
-		for (int i = 0; i < 8; i++) {
-			s16_le = ((int16_t)(buf[i*2+1]) << 8) | buf[i*2];
-			dac_samples[i+24] = ((uint16_t)(s16_le) + 32767) >> 4;
+	} else if (fill_dac2) {
+		for (i = HSAMPLES; i < NSAMPLES; i++) {
+			dac_samples[i] = ((uint16_t)(*s16_le++ + 32767)) >> 4;
 		}
 		fill_dac2 = false;
-		ctr = 0;
 	} else {
 		gpio_toggle(GPIOC, GPIO12);
 	}

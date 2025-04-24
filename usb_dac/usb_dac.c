@@ -16,8 +16,6 @@
 
 #include "usb.h"
 
-#define NSAMPLES 32
-#define HSAMPLES 16
 
 volatile bool fill_dac1 = false;
 volatile bool fill_dac2 = false;
